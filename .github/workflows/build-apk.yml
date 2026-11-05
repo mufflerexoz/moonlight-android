@@ -29,14 +29,15 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install NDK
+      - name: Install SDK platform and NDK (runner's preinstalled SDK)
         run: |
+          SDKMANAGER=$(ls -d "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | sort -V | tail -n1)
+          echo "Using $SDKMANAGER"
           NDK_VERSION=$(grep -oP 'ndkVersion "\K[^"]+' app/build.gradle)
-          yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "ndk;${NDK_VERSION}"
+          COMPILE_SDK=$(grep -oP 'compileSdk \K[0-9]+' app/build.gradle)
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
+          "$SDKMANAGER" "ndk;${NDK_VERSION}" "platforms;android-${COMPILE_SDK}" || \
+            "$SDKMANAGER" "ndk;${NDK_VERSION}"
 
       - name: Build debug APK
         run: |
