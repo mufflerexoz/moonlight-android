@@ -1,31 +1,65 @@
+<!-- Xbox-style game library: back button, PC name and clock, then the box-art grid -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/xbox_background"
     tools:context=".AppView" >
+
+    <LinearLayout
+        android:id="@+id/xboxHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/xbox_screen_padding"
+        android:paddingRight="@dimen/xbox_screen_padding"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:nextFocusDown="@+id/fragmentView"
+            android:contentDescription="@string/xbox_back"
+            android:src="@drawable/ic_xbox_back"
+            style="@style/XboxHeaderButton" />
+
+        <TextView
+            android:id="@+id/appListText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:preferKeepClear="true"
+            style="@style/XboxTitle" />
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/XboxClock" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/xboxSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/xboxHeader"
+        android:layout_marginLeft="@dimen/xbox_screen_padding"
+        android:layout_marginStart="@dimen/xbox_screen_padding"
+        android:layout_marginTop="8dp"
+        android:text="@string/xbox_section_apps"
+        style="@style/XboxSectionTitle" />
 
     <FrameLayout
         android:id="@+id/appFragmentContainer"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/appListText"/>
-    
-    <TextView
-        android:id="@+id/appListText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:preferKeepClear="true"
-        android:textSize="28sp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/xboxSectionTitle"
+        android:clipChildren="false"
+        android:clipToPadding="false"/>
 
 </RelativeLayout>

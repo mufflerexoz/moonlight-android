@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="133dp"
-    android:padding="5dp">
-    <ImageView
-        android:id="@+id/grid_image"
-        android:cropToPadding="false"
-        android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ImageView>
-    <ImageView
-        android:id="@+id/grid_overlay"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_width="33dp"
-        android:layout_height="33dp">
-    </ImageView>
-    <TextView
-        android:id="@+id/grid_text"
+<!-- Xbox-style game tile with rounded box art, focus ring and "running" badge -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="104dp"
+    android:layout_height="144dp"
+    android:padding="4dp"
+    android:background="@drawable/xbox_tile_frame"
+    android:stateListAnimator="@animator/xbox_tile_state">
+
+    <FrameLayout
+        android:id="@+id/grid_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/grid_overlay"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:textSize="14sp">
-    </TextView>
-</RelativeLayout>
+        android:background="@drawable/xbox_tile_surface"
+        android:foreground="@drawable/xbox_tile_ripple"
+        android:duplicateParentState="true"
+        android:elevation="2dp">
+
+        <ImageView
+            android:id="@+id/grid_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/grid_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/xbox_title_scrim"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="bottom|start"
+            android:maxLines="3"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="6dp"
+            android:textColor="@color/xbox_text_primary"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/grid_overlay"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/xbox_badge"
+            android:importantForAccessibility="no" />
+    </FrameLayout>
+</FrameLayout>

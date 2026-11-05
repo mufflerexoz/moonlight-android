@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="xbox_screen_padding">24dp</dimen>
+    <dimen name="xbox_tile_radius">8dp</dimen>
+    <dimen name="xbox_focus_stroke">3dp</dimen>
+    <!-- Minimum comfortable touch target for header buttons -->
+    <dimen name="xbox_header_button">52dp</dimen>
+    <dimen name="xbox_tile_spacing">14dp</dimen>
+</resources>

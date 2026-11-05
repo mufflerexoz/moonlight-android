@@ -60,6 +60,12 @@ public abstract class GenericGridAdapter<T> extends BaseAdapter {
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
             convertView = inflater.inflate(layoutId, viewGroup, false);
+
+            // Clip tile contents (box art, etc.) to the card's rounded corners
+            View card = convertView.findViewById(R.id.grid_card);
+            if (card != null) {
+                card.setClipToOutline(true);
+            }
         }
 
         ImageView imgView = convertView.findViewById(R.id.grid_image);

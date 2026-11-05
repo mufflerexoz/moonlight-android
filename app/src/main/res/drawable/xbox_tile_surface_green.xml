@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <corners android:radius="@dimen/xbox_tile_radius" />
+    <gradient
+        android:angle="315"
+        android:startColor="@color/xbox_green"
+        android:endColor="@color/xbox_green_bright" />
+</shape>

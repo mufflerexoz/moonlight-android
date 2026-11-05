@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Large circular header button with a comfortable touch target -->
+    <style name="XboxHeaderButton">
+        <item name="android:layout_width">@dimen/xbox_header_button</item>
+        <item name="android:layout_height">@dimen/xbox_header_button</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:padding">13dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">@drawable/xbox_round_button</item>
+        <item name="android:focusable">true</item>
+        <item name="android:preferKeepClear">true</item>
+    </style>
+
+    <style name="XboxTitle">
+        <item name="android:textColor">@color/xbox_text_primary</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="XboxSectionTitle">
+        <item name="android:textColor">@color/xbox_text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="XboxClock">
+        <item name="android:textColor">@color/xbox_text_primary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+</resources>

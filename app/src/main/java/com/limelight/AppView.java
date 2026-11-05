@@ -14,6 +14,7 @@ import com.limelight.nvstream.http.NvHTTP;
 import com.limelight.nvstream.http.PairingManager;
 import com.limelight.preferences.PreferenceConfiguration;
 import com.limelight.ui.AdapterFragment;
+import com.limelight.ui.TileFocusHelper;
 import com.limelight.ui.AdapterFragmentCallbacks;
 import com.limelight.utils.CacheHelper;
 import com.limelight.utils.Dialog;
@@ -313,6 +314,14 @@ public class AppView extends Activity implements AdapterFragmentCallbacks {
         TextView label = findViewById(R.id.appListText);
         setTitle(computerName);
         label.setText(computerName);
+
+        // Large on-screen back button for touch users (Xbox-style header)
+        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Bind to the computer manager service
         bindService(new Intent(this, ComputerManagerService.class), serviceConnection,
@@ -641,6 +650,7 @@ public class AppView extends Activity implements AdapterFragmentCallbacks {
             }
         });
         UiHelper.applyStatusBarPadding(listView);
+        TileFocusHelper.attach(listView);
         registerForContextMenu(listView);
         listView.requestFocus();
     }

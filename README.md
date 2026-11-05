@@ -1,5 +1,22 @@
 # Moonlight Android
 
+## Xbox-style UI fork
+
+This fork restyles Moonlight with an Xbox dashboard look and a friendlier touch interface:
+
+- **Dark dashboard theme** with the Xbox green accent, a top bar (title, clock, large round
+  buttons for Add PC / Help / Settings) and section headings.
+- **Tiles instead of icons**: rounded PC tiles (green when the PC is paired and ready, with a
+  status line such as "Ready to play" / "Offline" / "Tap to pair") and rounded box-art game tiles
+  with a "running" badge.
+- **Controller/remote focus** behaves like the Xbox dashboard: the selected tile grows and gets a
+  white focus ring. **Touch** gives a press-shrink and ripple, and the game list has an on-screen
+  back button.
+- **On-screen controller** redrawn in Xbox style: filled translucent buttons, A/B/X/Y in green,
+  red, blue and yellow, pill-shaped bumpers/triggers, MENU/VIEW labels, a solid D-pad cross and
+  thumbstick caps. Pressed elements light up green. Custom colors and opacity are still honored.
+
+
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/232a8tadrrn8jv0k/branch/master?svg=true)](https://ci.appveyor.com/project/cgutman/moonlight-android/branch/master)
 [![Translation Status](https://hosted.weblate.org/widgets/moonlight/-/moonlight-android/svg-badge.svg)](https://hosted.weblate.org/projects/moonlight/moonlight-android/)
 
