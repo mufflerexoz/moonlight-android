@@ -23,6 +23,9 @@
         <!-- Xbox green for all navigation/selection accents -->
         <item name="android:colorAccent">@color/xbox_green</item>
         <item name="android:colorControlActivated">@color/xbox_green</item>
+        <!-- Focus/press highlight in lists (e.g. Settings) is Xbox green -->
+        <item name="android:colorControlHighlight">@color/xbox_highlight</item>
+        <item name="android:windowBackground">@drawable/xbox_background</item>
     </style>
 
     <style name="StreamBaseTheme" parent="AppBaseTheme">

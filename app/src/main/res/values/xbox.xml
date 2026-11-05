@@ -4,10 +4,11 @@
     <color name="xbox_green">#107C10</color>
     <color name="xbox_green_light">#1E9A1E</color>
     <color name="xbox_button">#1E1E1E</color>
-    <color name="xbox_title_band">#99000000</color>
+    <color name="xbox_title_band">#4D000000</color>
+    <color name="xbox_highlight">#80107C10</color>
 
-    <dimen name="xbox_tile_size">150dp</dimen>
-    <dimen name="xbox_tile_spacing">22dp</dimen>
+    <dimen name="xbox_tile_size">180dp</dimen>
+    <dimen name="xbox_tile_spacing">26dp</dimen>
     <dimen name="xbox_screen_padding">36dp</dimen>
     <dimen name="xbox_header_button">52dp</dimen>
 
@@ -16,8 +17,21 @@
     <string name="xbox_settings">Settings</string>
     <string name="xbox_help">Help</string>
     <string name="xbox_add_pc">Add PC</string>
+    <string name="xbox_jump_back_in">Jump back in</string>
+    <string name="xbox_games_and_apps">Games &amp; apps</string>
 
     <!-- Round dark header button that turns Xbox green when focused or pressed -->
+    <style name="XboxSectionTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/xbox_screen_padding</item>
+        <item name="android:layout_marginStart">@dimen/xbox_screen_padding</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="XboxHeaderButton">
         <item name="android:layout_width">@dimen/xbox_header_button</item>
         <item name="android:layout_height">@dimen/xbox_header_button</item>

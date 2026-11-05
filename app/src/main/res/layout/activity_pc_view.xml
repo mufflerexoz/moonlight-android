@@ -1,16 +1,16 @@
-<!-- Xbox-style home: logo + title on the left, round buttons in the middle,
-     clock on the right, and a row of green tiles in the lower part of the screen -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Xbox-style screen: logo + title on the left, round buttons top right,
+     then a section heading with a left-aligned row of tiles a little above the bottom -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PcView" >
 
     <LinearLayout
         android:id="@+id/xboxHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/xbox_screen_padding"
@@ -21,31 +21,29 @@
 
         <LinearLayout
             android:id="@+id/xboxTitleBlock"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="@string/xbox_app_title"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/xbox_app_subtitle"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/settingsButton"
@@ -53,40 +51,36 @@
             android:src="@drawable/ic_settings"
             android:preferKeepClear="true"
             style="@style/XboxHeaderButton" />
-
         <ImageButton
             android:id="@+id/helpButton"
             android:contentDescription="@string/xbox_help"
             android:src="@drawable/ic_help"
             android:preferKeepClear="true"
             style="@style/XboxHeaderButton" />
-
         <ImageButton
             android:id="@+id/manuallyAddPc"
             android:contentDescription="@string/xbox_add_pc"
             android:src="@drawable/ic_add"
             android:preferKeepClear="true"
             style="@style/XboxHeaderButton" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <TextClock
-            android:id="@+id/xboxClock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold" />
     </LinearLayout>
+
+    <!-- Pushes the tile row down from the header, leaving room below it -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4" />
+
+    <TextView
+        android:id="@+id/xboxSectionTitle"
+        android:text="@string/xbox_jump_back_in"
+        style="@style/XboxSectionTitle" />
 
     <RelativeLayout
         android:id="@+id/pcFragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/xboxHeader"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipChildren="false"
         android:clipToPadding="false">
 
@@ -94,9 +88,11 @@
             android:id="@+id/no_pc_found_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/xbox_screen_padding"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:layout_centerInParent="true">
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp">
             <ProgressBar
                 android:id="@+id/pcs_loading"
                 android:layout_width="75dp"
@@ -111,10 +107,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_centerVertical="true"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="center"
+                android:textColor="#FFFFFF"
                 android:text="@string/searching_pc"/>
         </RelativeLayout>
 
     </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>

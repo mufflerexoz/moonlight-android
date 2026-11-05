@@ -1,15 +1,16 @@
-<!-- Xbox-style game list: logo + PC name on the left, clock on the right, tiles below -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Xbox-style screen: logo + title on the left, round buttons top right,
+     then a section heading with a left-aligned row of tiles a little above the bottom -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AppView" >
 
     <LinearLayout
         android:id="@+id/xboxHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/xbox_screen_padding"
@@ -19,12 +20,14 @@
         <include layout="@layout/xbox_header_logo" />
 
         <LinearLayout
+            android:id="@+id/xboxAppTitleBlock"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
             android:orientation="vertical">
+            <!-- Name of the selected PC, replacing "Moonlight" -->
             <TextView
                 android:id="@+id/appListText"
                 android:layout_width="wrap_content"
@@ -33,32 +36,35 @@
                 android:singleLine="true"
                 android:preferKeepClear="true"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/xbox_app_subtitle"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <TextClock
-            android:id="@+id/xboxClock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold" />
     </LinearLayout>
+
+    <!-- Pushes the tile row down from the header, leaving room below it -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4" />
+
+    <TextView
+        android:id="@+id/xboxSectionTitle"
+        android:text="@string/xbox_games_and_apps"
+        style="@style/XboxSectionTitle" />
 
     <FrameLayout
         android:id="@+id/appFragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/xboxHeader"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipChildren="false"
         android:clipToPadding="false"/>
-
-</RelativeLayout>
+</LinearLayout>

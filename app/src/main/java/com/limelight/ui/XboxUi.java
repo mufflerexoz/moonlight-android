@@ -21,7 +21,7 @@ public final class XboxUi {
     private XboxUi() {}
 
     /**
-     * Hides the system status bar (the header shows its own clock) and trims the
+     * Hides the system status bar for a clean dashboard look and trims the
      * header on narrow screens. Call after setContentView().
      */
     public static void applyChrome(Activity activity) {
@@ -36,12 +36,8 @@ public final class XboxUi {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
-        // Narrow (portrait phone) screens: keep the buttons, drop the clock and title text
+        // Narrow (portrait phone) screens: keep the logo and buttons, drop the home title text
         if (activity.getResources().getConfiguration().screenWidthDp < 480) {
-            View clock = activity.findViewById(R.id.xboxClock);
-            if (clock != null) {
-                clock.setVisibility(View.GONE);
-            }
             View title = activity.findViewById(R.id.xboxTitleBlock);
             if (title != null) {
                 title.setVisibility(View.GONE);

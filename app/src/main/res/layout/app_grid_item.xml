@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Green Xbox-style game tile with box art. The title band appears only on the highlighted tile. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="140dp"
-    android:layout_height="196dp"
+    android:layout_width="160dp"
+    android:layout_height="224dp"
     android:background="@drawable/xbox_tile"
     android:stateListAnimator="@animator/xbox_tile_state">
 
