@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:numColumns="auto_fit"
-    android:columnWidth="110dp"
+    android:columnWidth="120dp"
     android:stretchMode="none"
     android:horizontalSpacing="14dp"
     android:verticalSpacing="14dp"

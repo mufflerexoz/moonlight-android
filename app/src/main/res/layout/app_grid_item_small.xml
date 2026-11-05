@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Green Xbox-style game tile with box art. The title band appears only on the highlighted tile. -->
+<!-- Square green Xbox-style game tile (same size as the PC tiles); box art is cropped to fill it. The title band appears only on the highlighted tile. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="110dp"
-    android:layout_height="154dp"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
     android:background="@drawable/xbox_tile"
     android:stateListAnimator="@animator/xbox_tile_state">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cropToPadding="false"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:importantForAccessibility="no" />
 
     <!-- Shown by the art loader only when there is no box art -->
