@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Tiles are stacked from the bottom so a few items sit in a row in the lower
+     part of the screen, like the Xbox home. The list selector is disabled because
+     the highlighted tile shows its own title band instead. -->
 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragmentView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:numColumns="auto_fit"
-    android:columnWidth="150dp"
-    android:stretchMode="spacingWidthUniform"
+    android:columnWidth="140dp"
+    android:stretchMode="none"
+    android:horizontalSpacing="@dimen/xbox_tile_spacing"
+    android:verticalSpacing="@dimen/xbox_tile_spacing"
+    android:stackFromBottom="true"
+    android:paddingLeft="@dimen/xbox_screen_padding"
+    android:paddingRight="@dimen/xbox_screen_padding"
+    android:paddingTop="16dp"
+    android:paddingBottom="48dp"
+    android:listSelector="@android:color/transparent"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:clipChildren="false"
     android:clipToPadding="false"
-    android:gravity="center"/>
+    android:gravity="start"/>

@@ -1,29 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
-    android:layout_height="200dp"
-    android:padding="10dp">
+<!-- Green Xbox-style game tile with box art. The title band appears only on the highlighted tile. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_height="196dp"
+    android:background="@drawable/xbox_tile"
+    android:stateListAnimator="@animator/xbox_tile_state">
+
     <ImageView
         android:id="@+id/grid_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:cropToPadding="false"
         android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ImageView>
-    <ImageView
-        android:id="@+id/grid_overlay"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp">
-    </ImageView>
+        android:importantForAccessibility="no" />
+
+    <!-- Shown by the art loader only when there is no box art -->
     <TextView
         android:id="@+id/grid_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/grid_overlay"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:textSize="18sp">
-    </TextView>
-</RelativeLayout>
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/grid_overlay"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/grid_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/xbox_title_band"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/xbox_title_text"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+</FrameLayout>

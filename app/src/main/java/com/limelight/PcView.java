@@ -22,6 +22,7 @@ import com.limelight.preferences.PreferenceConfiguration;
 import com.limelight.preferences.StreamSettings;
 import com.limelight.ui.AdapterFragment;
 import com.limelight.ui.AdapterFragmentCallbacks;
+import com.limelight.ui.XboxUi;
 import com.limelight.utils.Dialog;
 import com.limelight.utils.HelpLauncher;
 import com.limelight.utils.ServerHelper;
@@ -124,6 +125,7 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
         setContentView(R.layout.activity_pc_view);
 
         UiHelper.notifyNewRootView(this);
+        XboxUi.applyChrome(this);
 
         // Allow floating expanded PiP overlays while browsing PCs
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -767,6 +769,7 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
             }
         });
         UiHelper.applyStatusBarPadding(listView);
+        XboxUi.attachTileHighlight(listView);
         registerForContextMenu(listView);
     }
 

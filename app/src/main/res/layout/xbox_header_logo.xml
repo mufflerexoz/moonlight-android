@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Moonlight logo in a green ring, used at the left of every Xbox-style header -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:background="@drawable/xbox_logo_ring">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:scaleX="1.55"
+        android:scaleY="1.55"
+        android:importantForAccessibility="no"
+        android:src="@mipmap/ic_launcher_foreground" />
+</FrameLayout>

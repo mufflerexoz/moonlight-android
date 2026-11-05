@@ -20,6 +20,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <!-- Xbox green for all navigation/selection accents -->
+        <item name="android:colorAccent">@color/xbox_green</item>
+        <item name="android:colorControlActivated">@color/xbox_green</item>
     </style>
 
     <style name="StreamBaseTheme" parent="AppBaseTheme">

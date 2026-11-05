@@ -15,6 +15,7 @@ import com.limelight.nvstream.http.PairingManager;
 import com.limelight.preferences.PreferenceConfiguration;
 import com.limelight.ui.AdapterFragment;
 import com.limelight.ui.AdapterFragmentCallbacks;
+import com.limelight.ui.XboxUi;
 import com.limelight.utils.CacheHelper;
 import com.limelight.utils.Dialog;
 import com.limelight.utils.ServerHelper;
@@ -299,6 +300,7 @@ public class AppView extends Activity implements AdapterFragmentCallbacks {
         }
 
         UiHelper.notifyNewRootView(this);
+        XboxUi.applyChrome(this);
 
         showHiddenApps = getIntent().getBooleanExtra(SHOW_HIDDEN_APPS_EXTRA, false);
         uuidString = getIntent().getStringExtra(UUID_EXTRA);
@@ -641,6 +643,7 @@ public class AppView extends Activity implements AdapterFragmentCallbacks {
             }
         });
         UiHelper.applyStatusBarPadding(listView);
+        XboxUi.attachTileHighlight(listView);
         registerForContextMenu(listView);
         listView.requestFocus();
     }
