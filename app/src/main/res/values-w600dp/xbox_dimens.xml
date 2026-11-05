@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Tablets, landscape phones and TVs get the full-size Xbox header -->
-    <dimen name="xbox_header_button">52dp</dimen>
-    <dimen name="xbox_header_button_gap">10dp</dimen>
-    <dimen name="xbox_header_padding">24dp</dimen>
-    <dimen name="xbox_title_size">26sp</dimen>
-    <bool name="xbox_wide_header">true</bool>
-</resources>
