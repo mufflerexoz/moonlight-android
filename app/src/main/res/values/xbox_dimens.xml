@@ -4,6 +4,10 @@
     <dimen name="xbox_tile_radius">8dp</dimen>
     <dimen name="xbox_focus_stroke">3dp</dimen>
     <!-- Minimum comfortable touch target for header buttons -->
-    <dimen name="xbox_header_button">52dp</dimen>
+    <dimen name="xbox_header_button">46dp</dimen>
+    <dimen name="xbox_header_button_gap">6dp</dimen>
+    <dimen name="xbox_header_padding">16dp</dimen>
+    <dimen name="xbox_title_size">22sp</dimen>
     <dimen name="xbox_tile_spacing">14dp</dimen>
+    <bool name="xbox_wide_header">false</bool>
 </resources>

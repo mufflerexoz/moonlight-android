@@ -15,6 +15,17 @@ This fork restyles Moonlight with an Xbox dashboard look and a friendlier touch 
 - **On-screen controller** redrawn in Xbox style: filled translucent buttons, A/B/X/Y in green,
   red, blue and yellow, pill-shaped bumpers/triggers, MENU/VIEW labels, a solid D-pad cross and
   thumbstick caps. Pressed elements light up green. Custom colors and opacity are still honored.
+- **Live wallpaper** ("Moonlight Dashboard"): a dark animated background with drifting green
+  glows, flowing light ribbons and rising particles; tap it for a green pulse. It only animates
+  while visible (about 30 FPS) and follows launcher page scrolling with a slight parallax.
+- **Android home screen**: "Moonlight Home" can be chosen as the device launcher. It shows your
+  PCs over the wallpaper, never closes on Back, and has a **My apps** drawer (grid button in the
+  header) with all installed Android apps as Xbox-style tiles (long-press for App info).
+
+To set them up, open **My apps** and tap the **Personalize** (palette) button, then choose
+*Set Xbox-style live wallpaper* or *Use Moonlight as home screen*. Both can also be picked from
+Android's own wallpaper and default home app settings. Moonlight's normal app icon keeps working
+as before.
 
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/232a8tadrrn8jv0k/branch/master?svg=true)](https://ci.appveyor.com/project/cgutman/moonlight-android/branch/master)

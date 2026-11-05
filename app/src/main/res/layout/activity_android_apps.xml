@@ -1,0 +1,83 @@
+<!-- Xbox-style "My apps" drawer for using Moonlight as the Android home screen -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/androidAppsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/xbox_background">
+
+    <LinearLayout
+        android:id="@+id/xboxHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/xbox_header_padding"
+        android:paddingRight="@dimen/xbox_header_padding"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:nextFocusDown="@+id/fragmentView"
+            android:contentDescription="@string/xbox_back"
+            android:src="@drawable/ic_xbox_back"
+            style="@style/XboxHeaderButton" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:text="@string/xbox_section_android_apps"
+            android:textSize="@dimen/xbox_title_size"
+            style="@style/XboxTitle" />
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_marginEnd="6dp"
+            style="@style/XboxClock" />
+
+        <ImageButton
+            android:id="@+id/personalizeButton"
+            android:nextFocusDown="@+id/fragmentView"
+            android:contentDescription="@string/xbox_personalize"
+            android:src="@drawable/ic_xbox_palette"
+            style="@style/XboxHeaderButton" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/appsLoading"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/xbox_green_bright" />
+
+    <GridView
+        android:id="@+id/fragmentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/xboxHeader"
+        android:numColumns="auto_fit"
+        android:columnWidth="128dp"
+        android:stretchMode="spacingWidthUniform"
+        android:horizontalSpacing="@dimen/xbox_tile_spacing"
+        android:verticalSpacing="@dimen/xbox_tile_spacing"
+        android:paddingLeft="@dimen/xbox_screen_padding"
+        android:paddingRight="@dimen/xbox_screen_padding"
+        android:paddingTop="12dp"
+        android:paddingBottom="24dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbarStyle="outsideOverlay"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center" />
+</RelativeLayout>

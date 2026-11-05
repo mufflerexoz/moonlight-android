@@ -12,4 +12,6 @@
     <color name="xbox_text_primary">#FFFFFF</color>
     <color name="xbox_text_secondary">#B3B3B3</color>
     <color name="xbox_scrim">#CC000000</color>
+    <!-- Darkens the live wallpaper behind the dashboard when used as a launcher -->
+    <color name="xbox_wallpaper_scrim">#59000000</color>
 </resources>

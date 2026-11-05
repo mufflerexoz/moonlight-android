@@ -315,4 +315,14 @@
     <string name="xbox_back">Back</string>
     <string name="xbox_app_title" translatable="false">Moonlight</string>
     <string name="xbox_settings">Settings</string>
+    <string name="xbox_section_android_apps">My apps</string>
+    <string name="xbox_personalize">Personalize</string>
+    <string name="xbox_set_live_wallpaper">Set Xbox-style live wallpaper</string>
+    <string name="xbox_set_home_launcher">Use Moonlight as home screen</string>
+    <string name="xbox_wallpaper_unsupported">Live wallpapers are not supported on this device</string>
+    <string name="xbox_app_launch_failed">Unable to open this app</string>
+    <string name="xbox_app_info">App info</string>
+    <string name="xbox_home_label">Moonlight Home</string>
+    <string name="xbox_wallpaper_label">Moonlight Dashboard</string>
+    <string name="xbox_wallpaper_description">Dark dashboard with drifting green light. Tap to send a pulse.</string>
 </resources>

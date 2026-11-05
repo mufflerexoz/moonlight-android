@@ -16,6 +16,9 @@
         android:maxSdkVersion="33" />
 
     <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="false" />
+    <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
     <uses-feature
@@ -41,6 +44,14 @@
     <uses-feature
         android:name="android.hardware.type.pc"
         android:required="false"/>
+
+    <!-- Needed on Android 11+ to list installed apps in the launcher's "My apps" drawer -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -105,6 +116,50 @@
                 <category android:name="tv.ouya.intent.category.APP" />
             </intent-filter>
         </activity>
+        <!-- Xbox-style dashboard as an Android home screen. It lives in its own task so it
+             doesn't interfere with Moonlight's normal launcher icon. -->
+        <activity
+            android:name=".launcher.HomeLauncher"
+            android:label="@string/xbox_home_label"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.limelight.home"
+            android:clearTaskOnLaunch="true"
+            android:stateNotNeeded="true"
+            android:excludeFromRecents="true"
+            android:resumeWhilePausing="true"
+            android:resizeableActivity="true"
+            android:enableOnBackInvokedCallback="false"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".launcher.AndroidAppsView"
+            android:label="@string/xbox_section_android_apps"
+            android:resizeableActivity="true"
+            android:enableOnBackInvokedCallback="true"
+            android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection" />
+
+        <!-- Xbox-style animated live wallpaper -->
+        <service
+            android:name=".wallpaper.XboxWallpaperService"
+            android:label="@string/xbox_wallpaper_label"
+            android:exported="true"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/xbox_wallpaper" />
+        </service>
+
         <!-- Small hack to support launcher shortcuts without relaunching over and over again when the back button is pressed -->
         <activity
             android:name=".ShortcutTrampoline"

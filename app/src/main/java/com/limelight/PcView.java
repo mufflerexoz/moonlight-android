@@ -9,6 +9,7 @@ import com.limelight.binding.crypto.AndroidCryptoProvider;
 import com.limelight.computers.ComputerManagerListener;
 import com.limelight.computers.ComputerManagerService;
 import com.limelight.grid.PcGridAdapter;
+import com.limelight.launcher.AndroidAppsView;
 import com.limelight.grid.assets.DiskAssetLoader;
 import com.limelight.nvstream.http.ComputerDetails;
 import com.limelight.nvstream.http.NvApp;
@@ -36,6 +37,8 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +48,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
@@ -121,10 +125,44 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
     private final static int TEST_NETWORK_ID = 10;
     private final static int GAMESTREAM_EOL_ID = 11;
 
+    /**
+     * True when running as the Android home screen (see {@link com.limelight.launcher.HomeLauncher}).
+     */
+    protected boolean isLauncherMode() {
+        return false;
+    }
+
+    private void applyDashboardChrome() {
+        if (isLauncherMode()) {
+            // Let the system wallpaper (e.g. the Xbox live wallpaper) show through the dashboard
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
+            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            findViewById(R.id.pcViewRoot).setBackgroundColor(
+                    getResources().getColor(R.color.xbox_wallpaper_scrim));
+        }
+
+        // Narrow (phone portrait) screens drop the decorative header items to keep
+        // the touch targets large
+        if (!getResources().getBoolean(R.bool.xbox_wide_header)) {
+            findViewById(R.id.xboxLogo).setVisibility(View.GONE);
+            findViewById(R.id.xboxClock).setVisibility(View.GONE);
+        }
+
+        findViewById(R.id.androidAppsButton).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PcView.this, AndroidAppsView.class);
+                i.putExtra(AndroidAppsView.EXTRA_LAUNCHER_MODE, isLauncherMode());
+                startActivity(i);
+            }
+        });
+    }
+
     private void initializeViews() {
         setContentView(R.layout.activity_pc_view);
 
         UiHelper.notifyNewRootView(this);
+        applyDashboardChrome();
 
         // Allow floating expanded PiP overlays while browsing PCs
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

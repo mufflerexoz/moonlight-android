@@ -1,6 +1,7 @@
 <!-- Xbox-style home: top bar with title, clock and round action buttons, then a tile grid -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pcViewRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/xbox_background"
@@ -13,12 +14,13 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/xbox_screen_padding"
-        android:paddingRight="@dimen/xbox_screen_padding"
+        android:paddingLeft="@dimen/xbox_header_padding"
+        android:paddingRight="@dimen/xbox_header_padding"
         android:paddingTop="16dp"
         android:paddingBottom="8dp">
 
         <FrameLayout
+            android:id="@+id/xboxLogo"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/xbox_logo_mark">
@@ -37,14 +39,23 @@
             android:layout_marginLeft="14dp"
             android:layout_marginStart="14dp"
             android:text="@string/xbox_app_title"
+            android:textSize="@dimen/xbox_title_size"
             style="@style/XboxTitle" />
 
         <TextClock
+            android:id="@+id/xboxClock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:layout_marginEnd="6dp"
             style="@style/XboxClock" />
+
+        <ImageButton
+            android:id="@+id/androidAppsButton"
+            android:nextFocusDown="@+id/fragmentView"
+            android:contentDescription="@string/xbox_section_android_apps"
+            android:src="@drawable/ic_xbox_apps"
+            style="@style/XboxHeaderButton" />
 
         <ImageButton
             android:id="@+id/manuallyAddPc"
