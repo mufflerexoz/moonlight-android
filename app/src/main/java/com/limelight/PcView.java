@@ -310,6 +310,11 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
 
         inForeground = true;
         startComputerUpdates();
+
+        // Pick up a background change made in the MoonlightX background picker
+        if (completeOnCreateCalled) {
+            XboxUi.applyBackground(this);
+        }
     }
 
     @Override

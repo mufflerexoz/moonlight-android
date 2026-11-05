@@ -2,6 +2,8 @@ package com.limelight.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,11 +22,60 @@ import com.limelight.R;
 public final class XboxUi {
     private XboxUi() {}
 
+    public static final String BACKGROUND_BLUR_GLASS = "blur_glass";
+    public static final String BACKGROUND_DARK_GREY = "dark_grey";
+
+    private static final String PREFS_NAME = "xbox_ui";
+    private static final String PREF_BACKGROUND = "background";
+
+    public static String getBackground(Context context) {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                .getString(PREF_BACKGROUND, BACKGROUND_BLUR_GLASS);
+    }
+
+    public static void setBackground(Context context, String background) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                .edit()
+                .putString(PREF_BACKGROUND, background)
+                .apply();
+    }
+
+    /**
+     * Applies the chosen app background (Blur Glass by default, or Dark Grey) to this
+     * activity's window. Safe to call again in onResume() to pick up a new choice.
+     */
+    public static void applyBackground(Activity activity) {
+        if (BACKGROUND_DARK_GREY.equals(getBackground(activity))) {
+            activity.getWindow().setBackgroundDrawableResource(R.color.xbox_dark_grey);
+        }
+        else {
+            activity.getWindow().setBackgroundDrawableResource(R.drawable.xbox_background);
+        }
+    }
+
+    /**
+     * Makes the MoonlightX logo in the header open the background picker.
+     */
+    public static void attachLogoClick(final Activity activity) {
+        View logo = activity.findViewById(R.id.xboxLogo);
+        if (logo != null) {
+            logo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.startActivity(new Intent(activity, BackgroundPickerActivity.class));
+                }
+            });
+        }
+    }
+
     /**
      * Hides the system status bar for a clean dashboard look and trims the
      * header on narrow screens. Call after setContentView().
      */
     public static void applyChrome(Activity activity) {
+        applyBackground(activity);
+        attachLogoClick(activity);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             WindowInsetsController controller = activity.getWindow().getInsetsController();
             if (controller != null) {

@@ -375,6 +375,9 @@ public class AppView extends Activity implements AdapterFragmentCallbacks {
     protected void onResume() {
         super.onResume();
 
+        // Pick up a background change made in the MoonlightX background picker
+        XboxUi.applyBackground(this);
+
         // Display a decoder crash notification if we've returned after a crash
         UiHelper.showDecoderCrashDialog(this);
 

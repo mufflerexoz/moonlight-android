@@ -1,5 +1,6 @@
 package com.limelight.preferences;
 
+import com.limelight.ui.XboxUi;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -267,6 +268,9 @@ public class AddComputerManually extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Use the background chosen in the MoonlightX background picker
+        XboxUi.applyBackground(this);
 
         UiHelper.setLocale(this);
 

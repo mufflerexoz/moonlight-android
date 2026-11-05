@@ -1,5 +1,6 @@
 package com.limelight.preferences;
 
+import com.limelight.ui.XboxUi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -57,6 +58,9 @@ public class StreamSettings extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Use the background chosen in the MoonlightX background picker
+        XboxUi.applyBackground(this);
 
         previousPrefs = PreferenceConfiguration.readPreferences(this);
 

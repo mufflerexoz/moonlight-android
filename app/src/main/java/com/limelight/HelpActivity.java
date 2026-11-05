@@ -1,5 +1,6 @@
 package com.limelight;
 
+import com.limelight.ui.XboxUi;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -22,6 +23,9 @@ public class HelpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Use the background chosen in the MoonlightX background picker
+        XboxUi.applyBackground(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedCallback = new OnBackInvokedCallback() {

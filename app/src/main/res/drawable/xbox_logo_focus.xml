@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ring around the MoonlightX logo button when it is focused or pressed -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="oval"><stroke android:width="3dp" android:color="#FFFFFF" /></shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="oval"><stroke android:width="3dp" android:color="#FFFFFF" /></shape>
+    </item>
+    <item>
+        <shape android:shape="oval"><solid android:color="@android:color/transparent" /></shape>
+    </item>
+</selector>
