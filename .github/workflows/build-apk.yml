@@ -1,0 +1,59 @@
+name: Build test APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'claude/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout (with moonlight-common-c submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK
+        run: |
+          NDK_VERSION=$(grep -oP 'ndkVersion "\K[^"]+' app/build.gradle)
+          yes | sdkmanager --licenses > /dev/null || true
+          sdkmanager "ndk;${NDK_VERSION}"
+
+      - name: Build debug APK
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace assembleNonRootDebug
+
+      - name: Collect APK
+        id: apk
+        run: |
+          APK=$(ls app/build/outputs/apk/nonRoot/debug/*.apk | head -n1)
+          OUT="moonlight-xbox-ui-$(echo "${GITHUB_SHA}" | cut -c1-7)-debug.apk"
+          cp "$APK" "$OUT"
+          echo "file=$OUT" >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: moonlight-xbox-ui-debug-apk
+          path: ${{ steps.apk.outputs.file }}
+          retention-days: 14
