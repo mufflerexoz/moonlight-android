@@ -50,38 +50,6 @@ public class PcGridAdapter extends GenericGridAdapter<PcView.ComputerObject> {
 
     @Override
     public void populateView(View parentView, ImageView imgView, ProgressBar prgView, TextView txtView, ImageView overlayView, PcView.ComputerObject obj) {
-        boolean online = obj.details.state == ComputerDetails.State.ONLINE;
-        boolean paired = obj.details.pairState == PairingManager.PairState.PAIRED;
-
-        // Xbox-style tile: ready-to-play PCs get the signature green tile
-        View card = parentView.findViewById(R.id.grid_card);
-        if (card != null) {
-            card.setBackgroundResource(online && paired ?
-                    R.drawable.xbox_tile_surface_green : R.drawable.xbox_tile_surface);
-        }
-
-        TextView statusView = parentView.findViewById(R.id.grid_status);
-        if (statusView != null) {
-            int statusRes;
-            if (obj.details.state == ComputerDetails.State.UNKNOWN) {
-                statusRes = R.string.xbox_status_refreshing;
-            }
-            else if (!online) {
-                statusRes = R.string.xbox_status_offline;
-            }
-            else if (!paired) {
-                statusRes = R.string.xbox_status_unpaired;
-            }
-            else if (obj.details.runningGameId != 0) {
-                statusRes = R.string.xbox_status_playing;
-            }
-            else {
-                statusRes = R.string.xbox_status_online;
-            }
-            statusView.setText(statusRes);
-            statusView.setTextColor(online && paired ? 0xE6FFFFFF : 0xFFB3B3B3);
-        }
-
         imgView.setImageResource(R.drawable.ic_computer);
         if (obj.details.state == ComputerDetails.State.ONLINE) {
             imgView.setAlpha(1.0f);

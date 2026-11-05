@@ -222,53 +222,35 @@ public class AnalogStick extends VirtualControllerElement {
         // set transparent background
         canvas.drawColor(Color.TRANSPARENT);
 
-        final float cx = getWidth() / 2f;
-        final float cy = getHeight() / 2f;
-        final int alpha = getOpacityAlpha();
-        final boolean clicked = isPressed() && click_state != CLICK_STATE.SINGLE;
-
-        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(getDefaultStrokeWidth());
 
-        // Translucent base well
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(clicked ? applyAlpha(pressedColor, (int) (alpha * 0.45f)) : getBackdropColor());
-        canvas.drawCircle(cx, cy, radius_complete, paint);
-
-        // Outer ring
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(clicked ? pressedColor : getDefaultColor());
-        canvas.drawCircle(cx, cy, radius_complete, paint);
-
-        // Subtle dead zone indicator
-        paint.setColor(applyAlpha(getDefaultColor(), (int) (alpha * 0.35f)));
-        canvas.drawCircle(cx, cy, radius_dead_zone, paint);
-
-        // Thumb cap
-        float thumbX = cx, thumbY = cy;
-        boolean active = false;
-        switch (stick_state) {
-            case NO_MOVEMENT:
-                break;
-            case MOVED_IN_DEAD_ZONE:
-            case MOVED_ACTIVE:
-                thumbX = position_stick_x;
-                thumbY = position_stick_y;
-                active = true;
-                break;
+        // draw outer circle
+        if (!isPressed() || click_state == CLICK_STATE.SINGLE) {
+            paint.setColor(getDefaultColor());
+        } else {
+            paint.setColor(pressedColor);
         }
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius_complete, paint);
 
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(applyAlpha(0x3A3A3A, alpha));
-        canvas.drawCircle(thumbX, thumbY, radius_analog_stick, paint);
+        paint.setColor(getDefaultColor());
+        // draw dead zone
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius_dead_zone, paint);
 
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(active ? pressedColor : getDefaultColor());
-        canvas.drawCircle(thumbX, thumbY, radius_analog_stick, paint);
-
-        // Concave grip ring on the cap, like a real thumbstick
-        paint.setColor(applyAlpha(getDefaultColor(), (int) (alpha * 0.4f)));
-        canvas.drawCircle(thumbX, thumbY, radius_analog_stick * 0.6f, paint);
+        // draw stick depending on state
+        switch (stick_state) {
+            case NO_MOVEMENT: {
+                paint.setColor(getDefaultColor());
+                canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius_analog_stick, paint);
+                break;
+            }
+            case MOVED_IN_DEAD_ZONE:
+            case MOVED_ACTIVE: {
+                paint.setColor(pressedColor);
+                canvas.drawCircle(position_stick_x, position_stick_y, radius_analog_stick, paint);
+                break;
+            }
+        }
     }
 
     private void updatePosition(long eventTime) {

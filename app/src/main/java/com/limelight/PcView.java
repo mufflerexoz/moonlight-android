@@ -22,7 +22,6 @@ import com.limelight.preferences.PreferenceConfiguration;
 import com.limelight.preferences.StreamSettings;
 import com.limelight.ui.AdapterFragment;
 import com.limelight.ui.AdapterFragmentCallbacks;
-import com.limelight.ui.TileFocusHelper;
 import com.limelight.utils.Dialog;
 import com.limelight.utils.HelpLauncher;
 import com.limelight.utils.ServerHelper;
@@ -768,7 +767,6 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
             }
         });
         UiHelper.applyStatusBarPadding(listView);
-        TileFocusHelper.attach(listView);
         registerForContextMenu(listView);
     }
 

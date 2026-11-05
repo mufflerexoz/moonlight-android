@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 
@@ -134,128 +133,32 @@ public class DigitalButton extends VirtualControllerElement {
         invalidate();
     }
 
-    /**
-     * Xbox-style accent colors for the face buttons. Other buttons use a neutral accent.
-     */
-    private static int getAccentColor(String text) {
-        switch (text) {
-            case "A":
-                return 0xFF55B83B;
-            case "B":
-                return 0xFFE8333A;
-            case "X":
-                return 0xFF2C8DE8;
-            case "Y":
-                return 0xFFF5B800;
-            default:
-                return 0;
-        }
-    }
-
-    private static String getDisplayText(String text) {
-        // Match the Xbox controller naming for the center buttons
-        switch (text) {
-            case "START":
-                return "MENU";
-            case "BACK":
-                return "VIEW";
-            case "GUIDE":
-                return "\u2716"; // Heavy X glyph, close to the Xbox button
-            default:
-                return text;
-        }
-    }
-
     @Override
     protected void onElementDraw(Canvas canvas) {
         // set transparent background
         canvas.drawColor(Color.TRANSPARENT);
 
-        final int width = getWidth();
-        final int height = getHeight();
-        final int alpha = getOpacityAlpha();
-        final int accent = getAccentColor(text);
-        final boolean isFaceButton = accent != 0;
-        final boolean pressed = isPressed();
-        final float stroke = getDefaultStrokeWidth();
+        paint.setTextSize(getPercent(getWidth(), 25));
+        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setStrokeWidth(getDefaultStrokeWidth());
 
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(stroke);
-
-        rect.left = rect.top = stroke;
-        rect.right = width - stroke;
-        rect.bottom = height - stroke;
-
-        // Square-ish elements are drawn as circles, everything else as rounded pills
-        boolean circular = Math.abs(width - height) < Math.max(width, height) * 0.15f;
-        float cornerRadius = Math.min(rect.width(), rect.height()) / 2;
-
-        // Background fill
-        int fillColor;
-        if (pressed) {
-            fillColor = isFaceButton ? applyAlpha(accent, alpha) : pressedColor;
-        }
-        else {
-            fillColor = getBackdropColor();
-        }
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(fillColor);
-        if (circular) {
-            canvas.drawOval(rect, paint);
-        }
-        else {
-            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint);
-        }
-
-        // Outline ring
-        int ringColor;
-        if (!isNormalMode() || !isFaceButton) {
-            ringColor = pressed ? pressedColor : getDefaultColor();
-        }
-        else {
-            ringColor = applyAlpha(accent, alpha);
-        }
+        paint.setColor(isPressed() ? pressedColor : getDefaultColor());
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(ringColor);
-        if (circular) {
-            canvas.drawOval(rect, paint);
-        }
-        else {
-            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint);
-        }
+
+        rect.left = rect.top = paint.getStrokeWidth();
+        rect.right = getWidth() - rect.left;
+        rect.bottom = getHeight() - rect.top;
+
+        canvas.drawOval(rect, paint);
 
         if (icon != -1) {
             Drawable d = getResources().getDrawable(icon);
-            d.setBounds(5, 5, width - 5, height - 5);
+            d.setBounds(5, 5, getWidth() - 5, getHeight() - 5);
             d.draw(canvas);
         } else {
-            String label = getDisplayText(text);
-
-            paint.setStyle(Paint.Style.FILL);
-            paint.setTypeface(Typeface.DEFAULT_BOLD);
-            paint.setTextAlign(Paint.Align.CENTER);
-            paint.setTextSize(circular ? width * 0.45f : height * 0.42f);
-
-            // Shrink long labels until they fit inside the element
-            float maxTextWidth = rect.width() * 0.8f;
-            float measured = paint.measureText(label);
-            if (measured > maxTextWidth && measured > 0) {
-                paint.setTextSize(paint.getTextSize() * maxTextWidth / measured);
-            }
-
-            if (pressed) {
-                paint.setColor(applyAlpha(Color.WHITE, alpha));
-            }
-            else if (isFaceButton && isNormalMode()) {
-                paint.setColor(applyAlpha(accent, alpha));
-            }
-            else {
-                paint.setColor(getDefaultColor());
-            }
-
-            Paint.FontMetrics fm = paint.getFontMetrics();
-            float baseline = height / 2f - (fm.ascent + fm.descent) / 2f;
-            canvas.drawText(label, width / 2f, baseline, paint);
+            paint.setStyle(Paint.Style.FILL_AND_STROKE);
+            paint.setStrokeWidth(getDefaultStrokeWidth()/2);
+            canvas.drawText(text, getPercent(getWidth(), 50), getPercent(getHeight(), 63), paint);
         }
     }
 

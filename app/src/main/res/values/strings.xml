@@ -303,16 +303,4 @@
     <string name="analogscroll_none">None (both sticks move the mouse)</string>
     <string name="analogscroll_right">Right analog stick</string>
     <string name="analogscroll_left">Left analog stick</string>
-    <!-- Xbox-style dashboard -->
-    <string name="xbox_section_pcs">My PCs</string>
-    <string name="xbox_section_apps">Games &amp; apps</string>
-    <string name="xbox_status_online">Ready to play</string>
-    <string name="xbox_status_offline">Offline</string>
-    <string name="xbox_status_unpaired">Tap to pair</string>
-    <string name="xbox_status_refreshing">Checking…</string>
-    <string name="xbox_status_playing">In game</string>
-    <string name="xbox_hint_long_press">Long-press a tile for more options</string>
-    <string name="xbox_back">Back</string>
-    <string name="xbox_app_title" translatable="false">Moonlight</string>
-    <string name="xbox_settings">Settings</string>
 </resources>

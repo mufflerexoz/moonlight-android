@@ -20,13 +20,6 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-        <!-- Xbox-style dark dashboard look -->
-        <item name="android:windowBackground">@drawable/xbox_background</item>
-        <item name="android:colorAccent">@color/xbox_green_bright</item>
-        <item name="android:colorPrimary">@color/xbox_bg_top</item>
-        <item name="android:colorPrimaryDark">@color/xbox_bg_bottom</item>
-        <item name="android:colorControlActivated">@color/xbox_green_bright</item>
-        <item name="android:textColorPrimary">@color/xbox_text_primary</item>
     </style>
 
     <style name="StreamBaseTheme" parent="AppBaseTheme">

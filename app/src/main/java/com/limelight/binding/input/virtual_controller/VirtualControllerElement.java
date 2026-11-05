@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -43,8 +42,8 @@ public abstract class VirtualControllerElement extends View {
 
     private final Paint paint = new Paint();
 
-    private int normalColor = 0xF0E6E6E6;
-    protected int pressedColor = 0xF0107C10;
+    private int normalColor = 0xF0888888;
+    protected int pressedColor = 0xF00000FF;
     private int configMoveColor = 0xF0FF0000;
     private int configResizeColor = 0xF0FF00FF;
     private int configSelectedColor = 0xF000FF00;
@@ -311,32 +310,6 @@ public abstract class VirtualControllerElement extends View {
         this.pressedColor = (hexOpacity << 24) | (pressedColor & 0x00FFFFFF);
 
         invalidate();
-    }
-
-    /**
-     * Returns true when the element is being drawn normally (i.e. not in the
-     * configuration move/resize mode, where the element must show its mode color).
-     */
-    protected final boolean isNormalMode() {
-        return currentMode == Mode.Normal;
-    }
-
-    /**
-     * Opacity (0-255) configured for this element, derived from its normal color.
-     */
-    protected final int getOpacityAlpha() {
-        return Color.alpha(getDefaultColor());
-    }
-
-    protected static int applyAlpha(int color, int alpha) {
-        return (Math.max(0, Math.min(255, alpha)) << 24) | (color & 0x00FFFFFF);
-    }
-
-    /**
-     * Translucent dark fill used behind every element so it stays readable over any game.
-     */
-    protected final int getBackdropColor() {
-        return applyAlpha(0x1A1A1A, (int) (getOpacityAlpha() * 0.55f));
     }
 
     protected final float getPercent(float value, float percent) {
