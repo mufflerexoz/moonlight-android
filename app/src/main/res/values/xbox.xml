@@ -11,7 +11,7 @@
     <dimen name="xbox_tile_size">180dp</dimen>
     <dimen name="xbox_tile_spacing">26dp</dimen>
     <dimen name="xbox_screen_padding">36dp</dimen>
-    <dimen name="xbox_header_button">52dp</dimen>
+    <dimen name="xbox_header_button">60dp</dimen>
 
     <string name="xbox_app_title" translatable="false">Moonlight</string>
     <string name="xbox_app_title_x" translatable="false">X</string>
@@ -20,9 +20,12 @@
     <string name="xbox_help">Help</string>
     <string name="xbox_add_pc">Add PC</string>
     <string name="xbox_background_title">MoonlightX background</string>
-    <string name="xbox_background_blur">Blur Glass</string>
+    <string name="xbox_background_word">background</string>
+    <string name="xbox_background_default">Default</string>
     <string name="xbox_background_grey">Dark Grey</string>
-    <string name="xbox_background_hint">Select A to apply</string>
+    <string name="xbox_background_hint_select">Select</string>
+    <string name="xbox_background_hint_apply">to apply</string>
+    <string name="xbox_button_a" translatable="false">A</string>
     <string name="xbox_jump_back_in">Jump back in</string>
     <string name="xbox_games_and_apps">Games &amp; apps</string>
 
@@ -38,12 +41,28 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Name shown under a header button while it is highlighted -->
+    <style name="XboxHeaderLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:background">@drawable/xbox_label_bg</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
     <style name="XboxHeaderButton">
         <item name="android:layout_width">@dimen/xbox_header_button</item>
         <item name="android:layout_height">@dimen/xbox_header_button</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-        <item name="android:padding">12dp</item>
+        <item name="android:padding">14dp</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:background">@drawable/xbox_header_button</item>
         <item name="android:focusable">true</item>

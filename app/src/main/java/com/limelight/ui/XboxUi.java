@@ -22,7 +22,7 @@ import com.limelight.R;
 public final class XboxUi {
     private XboxUi() {}
 
-    public static final String BACKGROUND_BLUR_GLASS = "blur_glass";
+    public static final String BACKGROUND_DEFAULT = "default";
     public static final String BACKGROUND_DARK_GREY = "dark_grey";
 
     private static final String PREFS_NAME = "xbox_ui";
@@ -30,7 +30,7 @@ public final class XboxUi {
 
     public static String getBackground(Context context) {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                .getString(PREF_BACKGROUND, BACKGROUND_BLUR_GLASS);
+                .getString(PREF_BACKGROUND, BACKGROUND_DEFAULT);
     }
 
     public static void setBackground(Context context, String background) {
@@ -41,7 +41,7 @@ public final class XboxUi {
     }
 
     /**
-     * Applies the chosen app background (Blur Glass by default, or Dark Grey) to this
+     * Applies the chosen app background (Default image, or Dark Grey) to this
      * activity's window. Safe to call again in onResume() to pick up a new choice.
      */
     public static void applyBackground(Activity activity) {
@@ -51,6 +51,42 @@ public final class XboxUi {
         else {
             activity.getWindow().setBackgroundDrawableResource(R.drawable.xbox_background);
         }
+    }
+
+    /**
+     * Shows a header button's name below it while the button is highlighted
+     * (controller/remote focus) or held down with a finger.
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    private static void attachButtonLabel(Activity activity, int buttonId, int labelId) {
+        final View button = activity.findViewById(buttonId);
+        final View label = activity.findViewById(labelId);
+        if (button == null || label == null) {
+            return;
+        }
+
+        button.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                label.setVisibility(hasFocus ? View.VISIBLE : View.INVISIBLE);
+            }
+        });
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN:
+                        label.setVisibility(View.VISIBLE);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        label.setVisibility(v.isFocused() ? View.VISIBLE : View.INVISIBLE);
+                        break;
+                }
+                // Don't consume: the click still goes through
+                return false;
+            }
+        });
     }
 
     /**
@@ -75,6 +111,9 @@ public final class XboxUi {
     public static void applyChrome(Activity activity) {
         applyBackground(activity);
         attachLogoClick(activity);
+        attachButtonLabel(activity, R.id.settingsButton, R.id.settingsButtonLabel);
+        attachButtonLabel(activity, R.id.helpButton, R.id.helpButtonLabel);
+        attachButtonLabel(activity, R.id.manuallyAddPc, R.id.manuallyAddPcLabel);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             WindowInsetsController controller = activity.getWindow().getInsetsController();

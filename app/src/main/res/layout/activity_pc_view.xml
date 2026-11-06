@@ -11,7 +11,7 @@
         android:id="@+id/xboxHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="top"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/xbox_screen_padding"
         android:paddingRight="@dimen/xbox_screen_padding"
@@ -22,10 +22,11 @@
         <LinearLayout
             android:id="@+id/xboxTitleBlock"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="68dp"
             android:layout_weight="1"
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -66,24 +67,69 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/settingsButton"
-            android:contentDescription="@string/xbox_settings"
-            android:src="@drawable/ic_settings"
-            android:preferKeepClear="true"
-            style="@style/XboxHeaderButton" />
-        <ImageButton
-            android:id="@+id/helpButton"
-            android:contentDescription="@string/xbox_help"
-            android:src="@drawable/ic_help"
-            android:preferKeepClear="true"
-            style="@style/XboxHeaderButton" />
-        <ImageButton
-            android:id="@+id/manuallyAddPc"
-            android:contentDescription="@string/xbox_add_pc"
-            android:src="@drawable/ic_add"
-            android:preferKeepClear="true"
-            style="@style/XboxHeaderButton" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:contentDescription="@string/xbox_settings"
+                android:src="@drawable/ic_settings"
+                android:preferKeepClear="true"
+                style="@style/XboxHeaderButton" />
+            <TextView
+                android:id="@+id/settingsButtonLabel"
+                android:text="@string/xbox_settings"
+                style="@style/XboxHeaderLabel" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/helpButton"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:contentDescription="@string/xbox_help"
+                android:src="@drawable/ic_help"
+                android:preferKeepClear="true"
+                style="@style/XboxHeaderButton" />
+            <TextView
+                android:id="@+id/helpButtonLabel"
+                android:text="@string/xbox_help"
+                style="@style/XboxHeaderLabel" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/manuallyAddPc"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:contentDescription="@string/xbox_add_pc"
+                android:src="@drawable/ic_add"
+                android:preferKeepClear="true"
+                style="@style/XboxHeaderButton" />
+            <TextView
+                android:id="@+id/manuallyAddPcLabel"
+                android:text="@string/xbox_add_pc"
+                style="@style/XboxHeaderLabel" />
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Pushes the tile row down from the header, leaving room below it -->

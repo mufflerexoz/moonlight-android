@@ -9,15 +9,46 @@
     android:paddingTop="32dp"
     android:paddingBottom="28dp">
 
-    <TextView
+    <!-- "Moonlight[X] background" -->
+    <LinearLayout
         android:id="@+id/pickerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="@string/xbox_background_title"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/xbox_app_title"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:background="@drawable/xbox_x_badge"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+            android:text="@string/xbox_app_title_x"
+            android:textColor="@color/xbox_green"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/xbox_background_word"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,18 +71,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/xbox_background_blur"
+                android:text="@string/xbox_background_default"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
             <FrameLayout
-                android:id="@+id/optionBlur"
+                android:id="@+id/optionDefault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/xbox_bg_option"
                 android:clickable="true"
                 android:focusable="true"
-                android:contentDescription="@string/xbox_background_blur"
+                android:contentDescription="@string/xbox_background_default"
                 android:nextFocusRight="@+id/optionGrey"
                 android:padding="4dp">
                 <ImageView
@@ -60,7 +91,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/xbox_bg_preview_blur" />
+                    android:src="@drawable/xbox_bg_preview_default" />
             </FrameLayout>
         </LinearLayout>
 
@@ -88,7 +119,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:contentDescription="@string/xbox_background_grey"
-                android:nextFocusLeft="@id/optionBlur"
+                android:nextFocusLeft="@id/optionDefault"
                 android:padding="4dp">
                 <ImageView
                     android:layout_width="match_parent"
@@ -101,14 +132,44 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
+    <!-- "Select (A) to apply" hint in a dark box -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="@string/xbox_background_hint"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:background="@drawable/xbox_hint_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/xbox_background_hint_select"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/xbox_a_button"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/xbox_button_a"
+            android:textColor="@color/xbox_green"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/xbox_background_hint_apply"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </RelativeLayout>

@@ -21,13 +21,13 @@ public class BackgroundPickerActivity extends Activity {
         setContentView(R.layout.activity_background_picker);
         UiHelper.notifyNewRootView(this);
 
-        View blur = findViewById(R.id.optionBlur);
+        View defaultOption = findViewById(R.id.optionDefault);
         View grey = findViewById(R.id.optionGrey);
 
-        blur.setOnClickListener(new View.OnClickListener() {
+        defaultOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                choose(XboxUi.BACKGROUND_BLUR_GLASS);
+                choose(XboxUi.BACKGROUND_DEFAULT);
             }
         });
         grey.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,7 @@ public class BackgroundPickerActivity extends Activity {
             grey.requestFocus();
         }
         else {
-            blur.requestFocus();
+            defaultOption.requestFocus();
         }
     }
 
