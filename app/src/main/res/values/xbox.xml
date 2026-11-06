@@ -7,6 +7,10 @@
     <color name="xbox_dark_grey">#2B2B2B</color>
     <color name="xbox_title_band">#4D000000</color>
     <color name="xbox_highlight">#80107C10</color>
+    <!-- Bright Xbox green used for every focus/selection ring -->
+    <color name="xbox_highlight_ring">#3FD23F</color>
+    <color name="xbox_highlight_glow">#663FD23F</color>
+    <color name="xbox_highlight_glow_soft">#333FD23F</color>
 
     <dimen name="xbox_tile_size">180dp</dimen>
     <dimen name="xbox_tile_spacing">26dp</dimen>

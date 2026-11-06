@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Frame around a background preview: white when focused/pressed (Xbox style) -->
+<!-- Frame around a background preview: bright Xbox green when focused/pressed (Xbox style) -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
-        <shape android:shape="rectangle"><stroke android:width="4dp" android:color="#FFFFFF" /></shape>
+        <shape android:shape="rectangle"><stroke android:width="5dp" android:color="@color/xbox_highlight_ring" /></shape>
     </item>
     <item android:state_focused="true">
-        <shape android:shape="rectangle"><stroke android:width="4dp" android:color="#FFFFFF" /></shape>
+        <shape android:shape="rectangle"><stroke android:width="5dp" android:color="@color/xbox_highlight_ring" /></shape>
     </item>
     <item>
         <shape android:shape="rectangle"><solid android:color="@android:color/transparent" /></shape>

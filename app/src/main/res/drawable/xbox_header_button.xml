@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Header button: no circle normally; Xbox green circle with a glowing white ring when
+<!-- Header button: no circle normally; Xbox green circle with a glowing green ring when
      highlighted (controller focus), plain green circle while pressed -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
@@ -9,15 +9,15 @@
         <layer-list>
             <!-- soft outer glow -->
             <item>
-                <shape android:shape="oval"><stroke android:width="6dp" android:color="#33FFFFFF" /></shape>
+                <shape android:shape="oval"><stroke android:width="6dp" android:color="@color/xbox_highlight_glow_soft" /></shape>
             </item>
             <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
-                <shape android:shape="oval"><stroke android:width="3dp" android:color="#66FFFFFF" /></shape>
+                <shape android:shape="oval"><stroke android:width="3dp" android:color="@color/xbox_highlight_glow" /></shape>
             </item>
             <item android:left="4dp" android:top="4dp" android:right="4dp" android:bottom="4dp">
                 <shape android:shape="oval">
                     <solid android:color="@color/xbox_green" />
-                    <stroke android:width="2dp" android:color="#FFFFFF" />
+                    <stroke android:width="2dp" android:color="@color/xbox_highlight_ring" />
                 </shape>
             </item>
         </layer-list>

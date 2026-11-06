@@ -4,6 +4,7 @@
     android:layout_width="@dimen/xbox_tile_size"
     android:layout_height="@dimen/xbox_tile_size"
     android:background="@drawable/xbox_tile"
+    android:foreground="@drawable/xbox_tile_ring"
     android:stateListAnimator="@animator/xbox_tile_state">
 
     <RelativeLayout
